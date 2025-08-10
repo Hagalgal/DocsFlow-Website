@@ -1,0 +1,173 @@
+{
+  "version": "0.4",
+  "title": "DocsFlow Homepage Template",
+  "type": "page",
+  "content": [
+    {
+      "id": "hero-section",
+      "elType": "section",
+      "settings": {
+        "layout": "boxed",
+        "content_width": {
+          "unit": "px",
+          "size": 1200
+        },
+        "background_background": "gradient",
+        "background_color": "#EFF6FF",
+        "background_color_b": "#FFFFFF",
+        "padding": {
+          "unit": "px",
+          "top": 100,
+          "right": 0,
+          "bottom": 100,
+          "left": 0
+        },
+        "margin": {
+          "unit": "px",
+          "top": 0,
+          "right": 0,
+          "bottom": 50,
+          "left": 0
+        }
+      },
+      "elements": [
+        {
+          "id": "hero-column",
+          "elType": "column",
+          "settings": {
+            "width": 100,
+            "content_position": "middle"
+          },
+          "elements": [
+            {
+              "id": "hero-heading",
+              "elType": "widget",
+              "widgetType": "heading",
+              "settings": {
+                "title": "מערכת ניהול מסמכים מתקדמת לסוכני ביטוח בישראל",
+                "size": "h1",
+                "align": "center",
+                "typography_typography": "custom",
+                "typography_font_family": "Assistant",
+                "typography_font_size": {
+                  "unit": "px",
+                  "size": 48
+                },
+                "typography_font_weight": "700",
+                "color": "#111827",
+                "margin": {
+                  "unit": "px",
+                  "top": 0,
+                  "right": 0,
+                  "bottom": 20,
+                  "left": 0
+                }
+              }
+            },
+            {
+              "id": "hero-subtitle",
+              "elType": "widget",
+              "widgetType": "text-editor",
+              "settings": {
+                "editor": "חסכו 70% מהזמן בניהול מסמכים וחתימות דיגיטליות עם טכנולוגיה ישראלית מתקדמת המשלבת בינה מלאכותית, אינטגרציית WhatsApp ואוטומציה של תהליכי עבודה",
+                "align": "center",
+                "typography_typography": "custom",
+                "typography_font_family": "Assistant",
+                "typography_font_size": {
+                  "unit": "px",
+                  "size": 20
+                },
+                "color": "#4B5563",
+                "margin": {
+                  "unit": "px",
+                  "top": 0,
+                  "right": 0,
+                  "bottom": 40,
+                  "left": 0
+                }
+              }
+            },
+            {
+              "id": "hero-buttons",
+              "elType": "widget",
+              "widgetType": "button",
+              "settings": {
+                "text": "בקש הדגמה חינם",
+                "link": {
+                  "url": "#contact"
+                },
+                "align": "center",
+                "size": "lg",
+                "background_color": "#2563EB",
+                "typography_typography": "custom",
+                "typography_font_family": "Assistant",
+                "typography_font_weight": "600",
+                "border_radius": {
+                  "unit": "px",
+                  "top": 8,
+                  "right": 8,
+                  "bottom": 8,
+                  "left": 8
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "features-section",
+      "elType": "section",
+      "settings": {
+        "layout": "boxed",
+        "content_width": {
+          "unit": "px",
+          "size": 1200
+        },
+        "padding": {
+          "unit": "px",
+          "top": 80,
+          "right": 0,
+          "bottom": 80,
+          "left": 0
+        }
+      },
+      "elements": [
+        {
+          "id": "features-heading-column",
+          "elType": "column",
+          "settings": {
+            "width": 100
+          },
+          "elements": [
+            {
+              "id": "features-heading",
+              "elType": "widget",
+              "widgetType": "heading",
+              "settings": {
+                "title": "פתרונות מתקדמים לסוכני ביטוח",
+                "size": "h2",
+                "align": "center",
+                "typography_typography": "custom",
+                "typography_font_family": "Assistant",
+                "typography_font_size": {
+                  "unit": "px",
+                  "size": 36
+                },
+                "typography_font_weight": "600",
+                "color": "#111827",
+                "margin": {
+                  "unit": "px",
+                  "top": 0,
+                  "right": 0,
+                  "bottom": 60,
+                  "left": 0
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

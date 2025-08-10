@@ -1,0 +1,21 @@
+# Allow SVG files
+<Files "*.svg">
+    Header set Content-Type "image/svg+xml"
+</Files>
+
+# Enable compression for SVG files
+<IfModule mod_deflate.c>
+    <Files "*.svg">
+        SetOutputFilter DEFLATE
+    </Files>
+</IfModule>
+
+# Cache static assets
+<IfModule mod_expires.c>
+    ExpiresActive on
+    ExpiresByType image/svg+xml "access plus 1 month"
+    ExpiresByType image/png "access plus 1 month"
+    ExpiresByType image/jpg "access plus 1 month"
+    ExpiresByType image/jpeg "access plus 1 month"
+    ExpiresByType image/webp "access plus 1 month"
+</IfModule>

@@ -1,0 +1,45 @@
+<svg width="500" height="300" viewBox="0 0 500 300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="solutionBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#F3F4F6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#E5E7EB;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="500" height="300" fill="url(#solutionBg)"/>
+  
+  <!-- Device mockup -->
+  <rect x="100" y="50" width="300" height="200" rx="15" fill="white" stroke="#D1D5DB" stroke-width="2"/>
+  
+  <!-- Screen -->
+  <rect x="115" y="70" width="270" height="160" rx="8" fill="#1F2937"/>
+  
+  <!-- Document icon -->
+  <rect x="200" y="100" width="100" height="120" rx="5" fill="white"/>
+  <rect x="210" y="110" width="80" height="8" rx="2" fill="#2563EB"/>
+  <rect x="210" y="125" width="60" height="6" rx="2" fill="#9CA3AF"/>
+  <rect x="210" y="140" width="70" height="6" rx="2" fill="#9CA3AF"/>
+  <rect x="210" y="155" width="50" height="6" rx="2" fill="#9CA3AF"/>
+  
+  <!-- Signature line -->
+  <rect x="210" y="180" width="80" height="2" fill="#E5E7EB"/>
+  <text x="250" y="200" font-family="Arial, sans-serif" font-size="10" fill="#6B7280" text-anchor="middle">חתימה דיגיטלית</text>
+  
+  <!-- Action buttons -->
+  <rect x="150" y="260" width="60" height="25" rx="12" fill="#2563EB"/>
+  <text x="180" y="275" font-family="Arial, sans-serif" font-size="10" fill="white" text-anchor="middle">חתום</text>
+  
+  <rect x="220" y="260" width="60" height="25" rx="12" fill="#10B981"/>
+  <text x="250" y="275" font-family="Arial, sans-serif" font-size="10" fill="white" text-anchor="middle">אושר</text>
+  
+  <rect x="290" y="260" width="60" height="25" rx="12" fill="#F59E0B"/>
+  <text x="320" y="275" font-family="Arial, sans-serif" font-size="10" fill="white" text-anchor="middle">שלח</text>
+  
+  <!-- Floating elements -->
+  <circle cx="50" cy="80" r="20" fill="rgba(37, 99, 235, 0.2)"/>
+  <text x="50" y="85" font-family="Arial, sans-serif" font-size="16" fill="#2563EB" text-anchor="middle">✓</text>
+  
+  <circle cx="450" cy="220" r="20" fill="rgba(16, 185, 129, 0.2)"/>
+  <text x="450" y="225" font-family="Arial, sans-serif" font-size="16" fill="#10B981" text-anchor="middle">📄</text>
+</svg>

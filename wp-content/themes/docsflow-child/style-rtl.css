@@ -1,0 +1,329 @@
+/*
+Theme Name: DocsFlow Child - RTL
+Template: astra
+Description: RTL-specific styles for DocsFlow Hebrew website
+Version: 1.0.2
+License: GPL v2 or later
+Text Domain: docsflow-child
+*/
+
+/* RTL-specific overrides for DocsFlow Child Theme */
+
+/* Force RTL direction */
+body {
+    direction: rtl;
+    text-align: right;
+}
+
+/* Navigation RTL fixes */
+.main-header-menu {
+    direction: rtl;
+}
+
+.main-header-menu ul {
+    text-align: right;
+}
+
+.main-header-menu li {
+    float: right;
+}
+
+.main-header-menu .sub-menu {
+    right: 0;
+    left: auto;
+}
+
+/* Button and form RTL adjustments */
+.hero-buttons,
+.cta-buttons,
+.overview-cta {
+    text-align: center;
+}
+
+.hero-buttons a,
+.cta-buttons a,
+.overview-cta a {
+    margin-left: var(--space-2);
+    margin-right: var(--space-2);
+}
+
+/* Grid RTL fixes */
+.overview-grid {
+    direction: rtl;
+}
+
+.overview-grid > * {
+    text-align: right;
+}
+
+.steps-grid {
+    direction: rtl;
+}
+
+.step-arrow {
+    transform: scaleX(-1); /* Flip arrows for RTL */
+}
+
+/* Feature cards RTL */
+.feature-card,
+.pricing-card,
+.testimonial-card {
+    text-align: right;
+}
+
+.feature-icon-large {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+/* Contact form RTL */
+.contact-grid {
+    direction: rtl;
+}
+
+.contact-info-item {
+    text-align: right;
+}
+
+/* Pricing table RTL */
+.comparison-table td:first-child {
+    text-align: right;
+}
+
+.pricing-badge {
+    right: 50%;
+    left: auto;
+    transform: translateX(50%);
+}
+
+/* Stats section RTL */
+.stat-item {
+    text-align: center;
+}
+
+/* Integration logos RTL */
+.integration-logos {
+    direction: rtl;
+}
+
+/* FAQ RTL */
+.faq-item {
+    text-align: right;
+}
+
+/* Testimonials RTL fixes */
+.testimonial-card {
+    border-right: 4px solid var(--primary-blue);
+    border-left: none;
+}
+
+/* Feature list RTL */
+.feature-list li {
+    padding-right: 0;
+    padding-left: var(--space-6);
+    position: relative;
+}
+
+.feature-list li::before {
+    left: 0;
+    right: auto;
+}
+
+.pricing-features li {
+    text-align: right;
+}
+
+/* Mobile menu RTL */
+@media (max-width: 768px) {
+    .main-header-menu {
+        text-align: right;
+    }
+    
+    .hero-buttons,
+    .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Additional RTL typography fixes */
+h1, h2, h3, h4, h5, h6 {
+    text-align: right;
+}
+
+.text-center {
+    text-align: center !important;
+}
+
+.text-right {
+    text-align: right !important;
+}
+
+.text-left {
+    text-align: left !important;
+}
+
+/* Form elements RTL */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+textarea,
+select {
+    text-align: right;
+    direction: rtl;
+}
+
+/* Back to top button RTL */
+.back-to-top {
+    left: 30px;
+    right: auto;
+}
+
+/* Cookie notice RTL */
+.cookie-content {
+    text-align: right;
+}
+
+@media (max-width: 768px) {
+    .cookie-content {
+        text-align: center;
+    }
+}
+
+/* Page header RTL */
+.page-header {
+    text-align: center;
+}
+
+/* Additional features RTL */
+.additional-item {
+    text-align: center;
+}
+
+/* Use case cards RTL */
+.use-case-card {
+    text-align: right;
+}
+
+/* Solution cards RTL */
+.solution-card {
+    text-align: right;
+}
+
+.learn-more {
+    float: left;
+}
+
+/* Benefit cards RTL */
+.benefit-card {
+    text-align: right;
+}
+
+.benefit-content {
+    text-align: right;
+}
+
+/* Integration items RTL */
+.integration-item {
+    text-align: center;
+}
+
+/* Logo RTL positioning */
+.site-title,
+.custom-logo-link {
+    text-align: right;
+}
+
+/* Footer RTL */
+.site-footer {
+    text-align: right;
+}
+
+/* Breadcrumbs RTL (if used) */
+.breadcrumb {
+    direction: rtl;
+}
+
+.breadcrumb-separator {
+    transform: scaleX(-1);
+}
+
+/* Search form RTL */
+.search-form {
+    direction: rtl;
+}
+
+.search-form input[type="search"] {
+    text-align: right;
+}
+
+/* Video modal RTL */
+.video-modal-close {
+    left: 0;
+    right: auto;
+}
+
+/* Error and success messages RTL */
+.error-message,
+.success-message {
+    text-align: right;
+}
+
+/* Dashicons RTL adjustments */
+.dashicons-arrow-right-alt {
+    transform: scaleX(-1);
+}
+
+/* Fix any remaining LTR elements */
+.ltr {
+    direction: ltr !important;
+    text-align: left !important;
+}
+
+/* WordPress admin bar compatibility */
+.admin-bar .back-to-top {
+    left: 30px;
+    right: auto;
+}
+
+/* Ensure all text inputs are RTL */
+input,
+textarea,
+select {
+    direction: rtl;
+    text-align: right;
+}
+
+/* Special cases for numbers and emails */
+input[type="email"],
+input[type="url"],
+input[type="number"] {
+    direction: ltr;
+    text-align: left;
+}
+
+/* Fix WordPress core RTL issues */
+.wp-block-button {
+    text-align: center;
+}
+
+.wp-block-button__link {
+    text-align: center;
+}
+
+/* Fix any grid alignment issues */
+.grid-2 > *,
+.grid-3 > *,
+.grid-4 > * {
+    text-align: right;
+}
+
+.grid-2.centered > *,
+.grid-3.centered > *,
+.grid-4.centered > * {
+    text-align: center;
+}
