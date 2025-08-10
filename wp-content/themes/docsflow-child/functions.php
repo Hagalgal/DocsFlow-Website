@@ -110,9 +110,23 @@ function docsflow_inline_critical_css() {
     }
     
     .container, .ast-container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 var(--space-4);
+        max-width: 1200px !important;
+        margin: 0 auto !important;
+        padding: 0 var(--space-4) !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+    
+    .site-content,
+    .entry-content {
+        max-width: 1200px !important;
+        margin: 0 auto !important;
+        padding: 0 var(--space-4) !important;
+    }
+    
+    .section {
+        width: 100% !important;
+        padding: var(--space-20) 0 !important;
     }
     
     h1, h2, h3, h4, h5, h6 {
@@ -494,27 +508,114 @@ function docsflow_admin_page() {
         docsflow_create_pages();
         echo '<div class="notice notice-success"><p>Pages created successfully!</p></div>';
     }
+    
+    if (isset($_POST['fix_templates']) && check_admin_referer('docsflow_fix_templates')) {
+        docsflow_fix_page_templates();
+        echo '<div class="notice notice-success"><p>Page templates fixed successfully!</p></div>';
+    }
     ?>
     <div class="wrap">
         <h1>DocsFlow Theme Setup</h1>
-        <p>Click the button below to create all necessary pages for the DocsFlow website.</p>
-        <form method="post">
-            <?php wp_nonce_field('docsflow_create_pages'); ?>
-            <input type="submit" name="create_pages" class="button button-primary" value="Create All Pages">
-        </form>
+        
+        <div style="display: flex; gap: 20px; margin-bottom: 30px;">
+            <div style="flex: 1;">
+                <h2>Create Pages</h2>
+                <p>Click the button below to create all necessary pages for the DocsFlow website.</p>
+                <form method="post">
+                    <?php wp_nonce_field('docsflow_create_pages'); ?>
+                    <input type="submit" name="create_pages" class="button button-primary" value="Create All Pages">
+                </form>
+            </div>
+            
+            <div style="flex: 1;">
+                <h2>Fix Templates</h2>
+                <p>If pages exist but aren't showing correctly, click here to fix their templates.</p>
+                <form method="post">
+                    <?php wp_nonce_field('docsflow_fix_templates'); ?>
+                    <input type="submit" name="fix_templates" class="button button-secondary" value="Fix Page Templates">
+                </form>
+            </div>
+        </div>
+        
+        <h2>Current Pages Status:</h2>
+        <?php docsflow_show_pages_status(); ?>
         
         <h2>Pages that will be created:</h2>
         <ul>
-            <li>דף הבית (Homepage)</li>
-            <li>תכונות (Features)</li>
-            <li>מחירים (Pricing)</li>
-            <li>צור קשר (Contact)</li>
-            <li>על אודות (About)</li>
-            <li>פתרונות/חתימה דיגיטלית (Solutions/Digital Signature)</li>
-            <li>פתרונות/ניהול מסמכים (Solutions/Document Management)</li>
-            <li>פתרונות/אוטומציה של תהליכים (Solutions/Process Automation)</li>
+            <li>דף הבית (Homepage) - Custom Template</li>
+            <li>תכונות (Features) - Custom Template</li>
+            <li>מחירים (Pricing) - Custom Template</li>
+            <li>צור קשר (Contact) - Custom Template</li>
+            <li>על אודות (About) - Default Template</li>
+            <li>פתרונות/חתימה דיגיטלית (Solutions/Digital Signature) - Solutions Template</li>
+            <li>פתרונות/ניהול מסמכים (Solutions/Document Management) - Solutions Template</li>
+            <li>פתרונות/אוטומציה של תהליכים (Solutions/Process Automation) - Solutions Template</li>
         </ul>
     </div>
     <?php
+}
+
+/**
+ * Fix page templates for existing pages
+ */
+function docsflow_fix_page_templates() {
+    $template_mappings = array(
+        'home' => 'page-templates/homepage.php',
+        'features' => 'page-templates/features.php',
+        'pricing' => 'page-templates/pricing.php',
+        'contact' => 'page-templates/contact.php',
+        'digital-signature' => 'page-templates/solutions.php',
+        'document-management' => 'page-templates/solutions.php',
+        'process-automation' => 'page-templates/solutions.php',
+    );
+    
+    foreach ($template_mappings as $slug => $template) {
+        $page = get_page_by_path($slug);
+        if (!$page) {
+            // Try to find as child page
+            $page = get_page_by_path('solutions/' . $slug);
+        }
+        
+        if ($page) {
+            update_post_meta($page->ID, '_wp_page_template', $template);
+        }
+    }
+}
+
+/**
+ * Show current pages status
+ */
+function docsflow_show_pages_status() {
+    $pages_to_check = array(
+        'home' => 'דף הבית',
+        'features' => 'תכונות', 
+        'pricing' => 'מחירים',
+        'contact' => 'צור קשר',
+        'about' => 'על אודות',
+        'solutions' => 'פתרונות',
+        'solutions/digital-signature' => 'חתימה דיגיטלית',
+        'solutions/document-management' => 'ניהול מסמכים',
+        'solutions/process-automation' => 'אוטומציה של תהליכים',
+    );
+    
+    echo '<table class="wp-list-table widefat fixed striped">';
+    echo '<thead><tr><th>Page</th><th>Status</th><th>Template</th><th>URL</th></tr></thead>';
+    echo '<tbody>';
+    
+    foreach ($pages_to_check as $slug => $title) {
+        $page = get_page_by_path($slug);
+        $status = $page ? '✅ Exists' : '❌ Missing';
+        $template = $page ? get_page_template_slug($page->ID) : 'N/A';
+        $url = $page ? get_permalink($page->ID) : 'N/A';
+        
+        echo "<tr>";
+        echo "<td><strong>{$title}</strong><br><small>{$slug}</small></td>";
+        echo "<td>{$status}</td>";
+        echo "<td>{$template}</td>";
+        echo "<td>" . ($page ? "<a href='{$url}' target='_blank'>View Page</a>" : 'N/A') . "</td>";
+        echo "</tr>";
+    }
+    
+    echo '</tbody></table>';
 }
 ?>

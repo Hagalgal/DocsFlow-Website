@@ -39,6 +39,34 @@ jQuery(document).ready(function($) {
     $(window).on('scroll', animateOnScroll);
     animateOnScroll(); // Initial check
 
+    // Add scroll effect to header and ensure fixed position
+    function handleHeaderScroll() {
+        if ($(window).scrollTop() > 50) {
+            $('.site-header').addClass('scrolled');
+        } else {
+            $('.site-header').removeClass('scrolled');
+        }
+    }
+    
+    $(window).on('scroll', handleHeaderScroll);
+    
+    // Ensure header is always fixed on page load
+    $(document).ready(function() {
+        $('.site-header').css({
+            'position': 'fixed',
+            'top': $('.admin-bar').length ? '32px' : '0',
+            'left': '0',
+            'right': '0',
+            'width': '100%',
+            'z-index': '999'
+        });
+        
+        // Adjust body padding for fixed header
+        var headerHeight = $('.site-header').outerHeight();
+        var adminBarHeight = $('.admin-bar').length ? 32 : 0;
+        $('body').css('padding-top', (headerHeight + adminBarHeight) + 'px');
+    });
+
     // Mobile menu toggle
     $('.mobile-menu-toggle').click(function(e) {
         e.preventDefault();

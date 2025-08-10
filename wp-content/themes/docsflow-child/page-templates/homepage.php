@@ -11,8 +11,8 @@ get_header(); ?>
     
     <!-- Hero Section -->
     <section class="hero-section">
-        <div class="container">
-            <div class="hero-content">
+        <div class="hero-content">
+            <div class="hero-text">
                 <h1 class="hero-title">מערכת ניהול מסמכים מתקדמת לסוכני ביטוח בישראל</h1>
                 <p class="hero-subtitle">חסכו 70% מהזמן בניהול מסמכים וחתימות דיגיטליות עם טכנולוגיה ישראלית מתקדמת</p>
                 <div class="hero-buttons">
@@ -20,8 +20,7 @@ get_header(); ?>
                     <a href="#features" class="btn-secondary btn-large">גלה את היכולות</a>
                 </div>
             </div>
-            <div class="hero-image">
-                <!-- Placeholder for hero image -->
+            <div class="hero-graphics">
                 <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/hero-placeholder.svg" alt="DocsFlow Dashboard" />
             </div>
         </div>
@@ -172,34 +171,66 @@ get_header(); ?>
     overflow-x: hidden;
 }
 
-.hero-content {
-    text-align: center;
-    padding: var(--space-16) 0;
-}
-
+/* Enhanced hero buttons */
 .hero-buttons {
     display: flex;
     gap: var(--space-4);
-    justify-content: center;
+    justify-content: flex-start;
     margin-top: var(--space-8);
+    flex-wrap: wrap;
 }
 
-.hero-image {
-    text-align: center;
-    margin-top: var(--space-12);
+.hero-buttons a {
+    white-space: nowrap;
 }
 
-.hero-image img {
+.hero-graphics {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-graphics img {
     max-width: 100%;
     height: auto;
+    filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.1));
 }
 
 .benefits-section {
-    background: var(--gray-50);
+    background: linear-gradient(135deg, #f8fafc 0%, #ffffff 50%, #f1f5f9 100%);
+    position: relative;
+}
+
+.benefits-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="4" height="4" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="0.5" fill="%23000" opacity="0.02"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+    pointer-events: none;
 }
 
 .integration-section {
-    background: var(--white);
+    background: linear-gradient(135deg, #ffffff 0%, #f9fafb 100%);
+    position: relative;
+    padding: var(--space-24) 0;
+}
+
+.integration-section::after {
+    content: '';
+    position: absolute;
+    bottom: -50px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    height: 100px;
+    background: linear-gradient(135deg, rgba(103, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+    border-radius: 50%;
+    filter: blur(40px);
+    z-index: 1;
 }
 
 .integration-logos {
@@ -219,8 +250,27 @@ get_header(); ?>
 }
 
 .stats-section {
-    background: linear-gradient(135deg, var(--primary-blue), var(--primary-blue-dark));
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
     color: var(--white);
+    position: relative;
+    overflow: hidden;
+}
+
+.stats-section::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -200px;
+    width: 600px;
+    height: 600px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.stats-section .container {
+    position: relative;
+    z-index: 2;
 }
 
 .grid-4 {
@@ -245,11 +295,52 @@ get_header(); ?>
 }
 
 .testimonials-section {
-    background: var(--gray-50);
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+    position: relative;
+}
+
+.testimonials-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 20% 20%, rgba(103, 126, 234, 0.05) 0%, transparent 50%), 
+                radial-gradient(circle at 80% 80%, rgba(118, 75, 162, 0.05) 0%, transparent 50%);
+    pointer-events: none;
 }
 
 .cta-section {
-    background: var(--primary-blue-ultra-light);
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.cta-section::before {
+    content: '';
+    position: absolute;
+    top: -100px;
+    left: -100px;
+    width: 300px;
+    height: 300px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.cta-section .container {
+    position: relative;
+    z-index: 2;
+}
+
+.cta-section .section-title {
+    color: white;
+}
+
+.cta-subtitle {
+    color: rgba(255, 255, 255, 0.9);
 }
 
 .cta-subtitle {
