@@ -308,15 +308,29 @@ function docsflow_excerpt_more($more) {
 add_filter('excerpt_more', 'docsflow_excerpt_more');
 
 /**
- * Add custom meta tags for SEO
+ * Include comprehensive SEO enhancements
  */
-function docsflow_add_meta_tags() {
+require_once get_stylesheet_directory() . '/inc/seo-enhancements.php';
+require_once get_stylesheet_directory() . '/inc/sitemap-enhancements.php';
+require_once get_stylesheet_directory() . '/inc/performance-optimizations.php';
+
+/**
+ * Additional SEO optimizations
+ */
+function docsflow_additional_seo_optimizations() {
+    // Add DNS prefetch for external resources
+    echo '<link rel="dns-prefetch" href="//fonts.googleapis.com">' . "\n";
+    echo '<link rel="dns-prefetch" href="//fonts.gstatic.com">' . "\n";
+    echo '<link rel="preconnect" href="https://fonts.googleapis.com">' . "\n";
+    echo '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>' . "\n";
+    
+    // Add site verification (replace with actual codes)
     if (is_front_page()) {
-        echo '<meta name="description" content="מערכת ניהול מסמכים מתקדמת לסוכני ביטוח בישראל - חתימה דיגיטלית, אוטומציה וניהול תהליכים">' . "\n";
-        echo '<meta name="keywords" content="תוכנה לסוכני ביטוח, חתימה דיגיטלית ביטוח, ניהול מסמכים ביטוח, אוטומציה תהליכי ביטוח">' . "\n";
+        echo '<!-- Site Verification -->' . "\n";
+        echo '<meta name="google-site-verification" content="YOUR_VERIFICATION_CODE">' . "\n";
     }
 }
-add_action('wp_head', 'docsflow_add_meta_tags');
+add_action('wp_head', 'docsflow_additional_seo_optimizations', 0);
 
 /**
  * Create custom pages programmatically

@@ -9,12 +9,19 @@ get_header(); ?>
 
 <div class="homepage-wrapper">
     
-    <!-- Hero Section -->
-    <section class="hero-section">
+    <!-- Hero Section with SEO-optimized content -->
+    <section class="hero-section" itemscope itemtype="https://schema.org/WebPageElement">
         <div class="hero-content">
             <div class="hero-text">
-                <h1 class="hero-title">מערכת ניהול מסמכים מתקדמת לסוכני ביטוח בישראל</h1>
-                <p class="hero-subtitle">חסכו 70% מהזמן בניהול מסמכים וחתימות דיגיטליות עם טכנולוגיה ישראלית מתקדמת</p>
+                <h1 class="hero-title" itemprop="headline">
+                    <span class="keyword-primary">חתימה דיגיטלית סוכני ביטוח</span> | 
+                    מערכת ניהול מסמכים מתקדמת DocsFlow
+                </h1>
+                <p class="hero-subtitle" itemprop="description">
+                    <strong>תוכנה לסוכני ביטוח</strong> - חסכו 70% מהזמן עם 
+                    <span class="keyword-highlight">ניהול מסמכים ביטוח</span> ו<span class="keyword-highlight">אוטומציה תהליכי ביטוח</span>. 
+                    WhatsApp מובנה, תמיכה בעברית 24/7
+                </p>
                 <div class="hero-buttons">
                     <a href="#demo" class="btn-primary btn-large">בקש הדגמה חינם</a>
                     <a href="#features" class="btn-secondary btn-large">גלה את היכולות</a>
