@@ -14,17 +14,33 @@ get_header(); ?>
         <div class="hero-content">
             <div class="hero-text">
                 <h1 class="hero-title" itemprop="headline">
-                    <span class="keyword-primary">חתימה דיגיטלית סוכני ביטוח</span> | 
-                    מערכת ניהול מסמכים מתקדמת DocsFlow
+                    חסכו <span class="hero-highlight">3 שעות ביום</span><br>
+                    עם פלטפורמת DocsFlow לסוכני ביטוח
                 </h1>
                 <p class="hero-subtitle" itemprop="description">
-                    <strong>תוכנה לסוכני ביטוח</strong> - חסכו 70% מהזמן עם 
-                    <span class="keyword-highlight">ניהול מסמכים ביטוח</span> ו<span class="keyword-highlight">אוטומציה תהליכי ביטוח</span>. 
-                    WhatsApp מובנה, תמיכה בעברית 24/7
+                    <strong>המערכת היחידה בישראל</strong> שמאחדת חתימה דיגיטלית, ניהול מסמכים ואוטומציה עם WhatsApp מובנה. 
+                    <span class="hero-benefit">מעל 500 סוכני ביטוח כבר חוסכים זמן וכסף איתנו</span>
                 </p>
                 <div class="hero-buttons">
-                    <a href="#demo" class="btn-primary btn-large">בקש הדגמה חינם</a>
-                    <a href="#features" class="btn-secondary btn-large">גלה את היכולות</a>
+                    <a href="#demo" class="btn-primary btn-large cta-enhanced">
+                        <span class="cta-main">קבל הדגמה אישית</span>
+                        <span class="cta-sub">15 דקות, התחל לחסוך היום</span>
+                    </a>
+                    <a href="#features" class="btn-secondary btn-large">
+                        <span class="cta-main">צפה בדמו מהיר</span>
+                        <span class="cta-sub">2 דקות בלבד</span>
+                    </a>
+                </div>
+                <div class="hero-trust-indicators">
+                    <div class="trust-item">
+                        <strong>500+</strong> סוכני ביטוח פעילים
+                    </div>
+                    <div class="trust-item">
+                        <strong>ISO 27001</strong> מאושר אבטחה
+                    </div>
+                    <div class="trust-item">
+                        <strong>99.9%</strong> זמינות מובטחת
+                    </div>
                 </div>
             </div>
             <div class="hero-graphics">
@@ -36,28 +52,28 @@ get_header(); ?>
     <!-- Key Benefits Section -->
     <section class="section benefits-section">
         <div class="container">
-            <h2 class="section-title text-center">למה סוכני ביטוח בוחרים ב-DocsFlow?</h2>
+            <h2 class="section-title text-center">הפרודוקטיביות שלכם עולה פי 3 עם DocsFlow</h2>
             <div class="grid-3">
                 <div class="feature-card">
                     <div class="feature-card-icon">
                         <span class="dashicons dashicons-clock"></span>
                     </div>
-                    <h3 class="feature-card-title">חיסכון של 70% בזמן</h3>
-                    <p class="feature-card-description">אוטומציה מלאה של תהליכי עבודה, חתימות דיגיטליות ומסמכים - כל מה שצריך במקום אחד</p>
+                    <h3 class="feature-card-title">3 שעות פחות עבודה ביום</h3>
+                    <p class="feature-card-description">מהר שלקח לכם שעות עכשיו לוקח דקות. לקוחות מקבלים מסמכים תוך 5 דקות במקום 2 שעות</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-card-icon">
                         <span class="dashicons dashicons-shield-alt"></span>
                     </div>
-                    <h3 class="feature-card-title">אבטחה ברמה הגבוהה ביותר</h3>
-                    <p class="feature-card-description">עמידה בתקני אבטחת מידע מחמירים, הצפנה מלאה וגיבויים אוטומטיים</p>
+                    <h3 class="feature-card-title">אפס חשש מאבדן מסמכים</h3>
+                    <p class="feature-card-description">כל המסמכים מוגבים אוטומטית ומוגנים בהצפנה צבאית. לא תאבדו עוד מסמך חשוב</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-card-icon">
                         <span class="dashicons dashicons-phone"></span>
                     </div>
-                    <h3 class="feature-card-title">תמיכה בעברית 24/7</h3>
-                    <p class="feature-card-description">צוות תמיכה ישראלי מקצועי זמין בכל שעה לכל שאלה או בעיה</p>
+                    <h3 class="feature-card-title">תמיכה שפותרת בעיות מיד</h3>
+                    <p class="feature-card-description">צוות ישראלי שמכיר את השוק שלכם ועונה תוך דקות, לא שעות</p>
                 </div>
             </div>
         </div>

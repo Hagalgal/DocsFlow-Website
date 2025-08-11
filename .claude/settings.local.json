@@ -2,7 +2,10 @@
   "permissions": {
     "allow": [
       "Bash(wp theme:*)",
-      "Bash(mkdir:*)"
+      "Bash(mkdir:*)",
+      "Bash(git push:*)",
+      "Bash(wp post list:*)",
+      "Bash(git add:*)"
     ],
     "deny": []
   }
