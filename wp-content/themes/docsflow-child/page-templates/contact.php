@@ -104,16 +104,6 @@ get_header(); ?>
                 <div class="contact-info-wrapper">
                     <h2 class="info-title">פרטי התקשרות</h2>
                     
-                    <div class="contact-info-item">
-                        <div class="info-icon">
-                            <span class="dashicons dashicons-phone"></span>
-                        </div>
-                        <div class="info-content">
-                            <h4>טלפון</h4>
-                            <p>03-1234567</p>
-                            <p>ראשון-חמישי: 09:00-18:00</p>
-                        </div>
-                    </div>
                     
                     <div class="contact-info-item">
                         <div class="info-icon">
@@ -126,16 +116,6 @@ get_header(); ?>
                         </div>
                     </div>
                     
-                    <div class="contact-info-item">
-                        <div class="info-icon">
-                            <span class="dashicons dashicons-location"></span>
-                        </div>
-                        <div class="info-content">
-                            <h4>כתובת</h4>
-                            <p>רחוב הארבעה 21</p>
-                            <p>תל אביב, 6473921</p>
-                        </div>
-                    </div>
                     
                     <div class="contact-info-item">
                         <div class="info-icon">
@@ -143,7 +123,7 @@ get_header(); ?>
                         </div>
                         <div class="info-content">
                             <h4>WhatsApp Business</h4>
-                            <p><a href="https://wa.me/972501234567" target="_blank">050-1234567</a></p>
+                            <p><a href="https://wa.me/9720502417728" target="_blank">050-2417728</a></p>
                             <p>תמיכה מהירה בוואטסאפ</p>
                         </div>
                     </div>

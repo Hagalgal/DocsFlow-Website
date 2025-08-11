@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <defs>
+    <!-- Digital Signature Icon -->
+    <g id="icon-signature">
+      <path d="M8 16h8v2H8v-2z" fill="currentColor"/>
+      <path d="M20 6l-10 10-4-4 1.41-1.41L10 13.17 18.59 4.59 20 6z" fill="currentColor"/>
+      <path d="M22 14v6a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h10" stroke="currentColor" stroke-width="1.5" fill="none"/>
+      <circle cx="18" cy="8" r="3" stroke="currentColor" stroke-width="1.5" fill="none"/>
+    </g>
+    
+    <!-- Document Management Icon -->
+    <g id="icon-documents">
+      <rect x="4" y="4" width="12" height="16" rx="2" stroke="currentColor" stroke-width="1.5" fill="none"/>
+      <rect x="8" y="2" width="12" height="16" rx="2" stroke="currentColor" stroke-width="1.5" fill="rgba(103, 126, 234, 0.1)"/>
+      <path d="M10 10h6M10 12h6M10 14h4" stroke="currentColor" stroke-width="1"/>
+      <circle cx="17" cy="7" r="2" fill="#10B981"/>
+      <path d="M16 7l.5.5L18 6" stroke="white" stroke-width="0.8" fill="none"/>
+    </g>
+    
+    <!-- Process Automation Icon -->
+    <g id="icon-automation">
+      <circle cx="6" cy="12" r="3" stroke="currentColor" stroke-width="1.5" fill="rgba(103, 126, 234, 0.1)"/>
+      <circle cx="18" cy="8" r="3" stroke="currentColor" stroke-width="1.5" fill="rgba(245, 158, 11, 0.1)"/>
+      <circle cx="18" cy="16" r="3" stroke="currentColor" stroke-width="1.5" fill="rgba(16, 185, 129, 0.1)"/>
+      <path d="M9 12h6" stroke="currentColor" stroke-width="1.5"/>
+      <path d="M15 10l3-2M15 14l3 2" stroke="currentColor" stroke-width="1.5"/>
+      <path d="M7.5 10.5L9 9M7.5 13.5L9 15" stroke="currentColor" stroke-width="1"/>
+    </g>
+    
+    <!-- Security/Shield Icon -->
+    <g id="icon-security">
+      <path d="M12 2l8 3v7c0 5.25-3.99 9.67-9 10-5.01-.33-9-4.75-9-10V5l8-3z" stroke="currentColor" stroke-width="1.5" fill="rgba(103, 126, 234, 0.1)"/>
+      <path d="M8.5 12l2.5 2.5 5-5" stroke="#10B981" stroke-width="2" fill="none"/>
+      <circle cx="12" cy="2" r="1" fill="currentColor"/>
+    </g>
+    
+    <!-- Support/Chat Icon -->
+    <g id="icon-support">
+      <rect x="2" y="6" width="16" height="10" rx="3" stroke="currentColor" stroke-width="1.5" fill="rgba(103, 126, 234, 0.1)"/>
+      <path d="M6 18l4-2h8c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v6c0 1.1.9 2 2 2z" fill="rgba(245, 158, 11, 0.1)"/>
+      <circle cx="8" cy="11" r="1" fill="currentColor"/>
+      <circle cx="12" cy="11" r="1" fill="currentColor"/>
+      <circle cx="16" cy="11" r="1" fill="currentColor"/>
+      <path d="M20 2v2h2" stroke="#10B981" stroke-width="1.5" fill="none"/>
+    </g>
+    
+    <!-- WhatsApp Integration Icon -->
+    <g id="icon-whatsapp">
+      <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5" fill="rgba(37, 211, 102, 0.1)"/>
+      <path d="M8.5 18.5c1.5.8 3.2 1 4.5 1 4.4 0 8-3.6 8-8s-3.6-8-8-8-8 3.6-8 8c0 1.5.4 2.9 1 4.1l-1 3.4 3.5-1z" stroke="#25D366" stroke-width="1.2" fill="none"/>
+      <path d="M9.5 10c0-.3.1-.6.3-.8.2-.2.4-.2.6-.2s.4 0 .6.2.3.5.3.8v2c0 .3-.1.6-.3.8s-.4.2-.6.2-.4 0-.6-.2-.3-.5-.3-.8v-2z" fill="currentColor"/>
+      <path d="M13 9.5c0-.3.1-.6.3-.8s.4-.2.6-.2.4 0 .6.2.3.5.3.8v3c0 .3-.1.6-.3.8s-.4.2-.6.2-.4 0-.6-.2-.3-.5-.3-.8v-3z" fill="currentColor"/>
+    </g>
+    
+    <!-- Time/Clock Icon -->
+    <g id="icon-time">
+      <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5" fill="rgba(245, 158, 11, 0.1)"/>
+      <path d="M12 6v6l4 2" stroke="currentColor" stroke-width="2" fill="none"/>
+      <circle cx="12" cy="12" r="1" fill="currentColor"/>
+      <path d="M18 6l2-2M6 6L4 4" stroke="#F59E0B" stroke-width="1.5"/>
+    </g>
+    
+    <!-- Money/Savings Icon -->
+    <g id="icon-savings">
+      <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5" fill="rgba(16, 185, 129, 0.1)"/>
+      <path d="M12 6v12M9 8h6a2 2 0 0 1 0 4h-6M9 12h6a2 2 0 0 1 0 4H9" stroke="currentColor" stroke-width="1.5"/>
+      <circle cx="12" cy="6" r="1" fill="#10B981"/>
+      <circle cx="12" cy="18" r="1" fill="#10B981"/>
+    </g>
+    
+    <!-- Mobile/Phone Icon -->
+    <g id="icon-mobile">
+      <rect x="7" y="2" width="10" height="20" rx="2" stroke="currentColor" stroke-width="1.5" fill="rgba(103, 126, 234, 0.1)"/>
+      <path d="M7 5h10M7 19h10" stroke="currentColor" stroke-width="1"/>
+      <circle cx="12" cy="20" r="0.5" fill="currentColor"/>
+      <rect x="9" y="7" width="6" height="10" rx="1" stroke="currentColor" stroke-width="1" fill="rgba(245, 158, 11, 0.1)"/>
+      <path d="M10 9h4M10 11h4M10 13h3" stroke="currentColor" stroke-width="0.8"/>
+    </g>
+</svg>

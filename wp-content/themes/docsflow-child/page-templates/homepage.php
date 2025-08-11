@@ -55,22 +55,28 @@ get_header(); ?>
             <h2 class="section-title text-center">הפרודוקטיביות שלכם עולה פי 3 עם DocsFlow</h2>
             <div class="grid-3">
                 <div class="feature-card">
-                    <div class="feature-card-icon">
-                        <span class="dashicons dashicons-clock"></span>
+                    <div class="custom-icon-wrapper icon-animate-pulse">
+                        <svg class="custom-icon">
+                            <use href="<?php echo get_stylesheet_directory_uri(); ?>/assets/icons/custom-icons.svg#icon-time"></use>
+                        </svg>
                     </div>
                     <h3 class="feature-card-title">3 שעות פחות עבודה ביום</h3>
                     <p class="feature-card-description">מהר שלקח לכם שעות עכשיו לוקח דקות. לקוחות מקבלים מסמכים תוך 5 דקות במקום 2 שעות</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-card-icon">
-                        <span class="dashicons dashicons-shield-alt"></span>
+                    <div class="custom-icon-wrapper">
+                        <svg class="custom-icon">
+                            <use href="<?php echo get_stylesheet_directory_uri(); ?>/assets/icons/custom-icons.svg#icon-security"></use>
+                        </svg>
                     </div>
                     <h3 class="feature-card-title">אפס חשש מאבדן מסמכים</h3>
                     <p class="feature-card-description">כל המסמכים מוגבים אוטומטית ומוגנים בהצפנה צבאית. לא תאבדו עוד מסמך חשוב</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-card-icon">
-                        <span class="dashicons dashicons-phone"></span>
+                    <div class="custom-icon-wrapper icon-animate-bounce">
+                        <svg class="custom-icon">
+                            <use href="<?php echo get_stylesheet_directory_uri(); ?>/assets/icons/custom-icons.svg#icon-support"></use>
+                        </svg>
                     </div>
                     <h3 class="feature-card-title">תמיכה שפותרת בעיות מיד</h3>
                     <p class="feature-card-description">צוות ישראלי שמכיר את השוק שלכם ועונה תוך דקות, לא שעות</p>
@@ -85,24 +91,30 @@ get_header(); ?>
             <h2 class="section-title text-center">הפתרונות המובילים שלנו</h2>
             <div class="grid-3">
                 <div class="feature-card">
-                    <div class="feature-card-icon">
-                        <span class="dashicons dashicons-edit"></span>
+                    <div class="custom-icon-wrapper">
+                        <svg class="custom-icon">
+                            <use href="<?php echo get_stylesheet_directory_uri(); ?>/assets/icons/custom-icons.svg#icon-signature"></use>
+                        </svg>
                     </div>
                     <h3 class="feature-card-title">חתימה דיגיטלית</h3>
                     <p class="feature-card-description">חתימה דיגיטלית מאושרת על כל סוגי המסמכים - פוליסות, הצעות, טפסים ועוד</p>
                     <a href="/solutions/digital-signature" class="btn-primary btn-small">למידע נוסף</a>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-card-icon">
-                        <span class="dashicons dashicons-portfolio"></span>
+                    <div class="custom-icon-wrapper icon-animate-pulse">
+                        <svg class="custom-icon">
+                            <use href="<?php echo get_stylesheet_directory_uri(); ?>/assets/icons/custom-icons.svg#icon-documents"></use>
+                        </svg>
                     </div>
                     <h3 class="feature-card-title">ניהול מסמכים חכם</h3>
                     <p class="feature-card-description">ארגון אוטומטי של כל המסמכים, חיפוש מהיר ושיתוף קל עם לקוחות</p>
                     <a href="/solutions/document-management" class="btn-primary btn-small">למידע נוסף</a>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-card-icon">
-                        <span class="dashicons dashicons-admin-generic"></span>
+                    <div class="custom-icon-wrapper icon-animate-rotate">
+                        <svg class="custom-icon">
+                            <use href="<?php echo get_stylesheet_directory_uri(); ?>/assets/icons/custom-icons.svg#icon-automation"></use>
+                        </svg>
                     </div>
                     <h3 class="feature-card-title">אוטומציה של תהליכים</h3>
                     <p class="feature-card-description">הגדרת תהליכי עבודה אוטומטיים, תזכורות, משימות והתראות</p>
@@ -111,6 +123,9 @@ get_header(); ?>
             </div>
         </div>
     </section>
+
+    <!-- Interactive Demo Section -->
+    <?php include get_stylesheet_directory() . '/partials/demo-section.php'; ?>
 
     <!-- Integration Section -->
     <section class="section integration-section">
@@ -150,29 +165,140 @@ get_header(); ?>
         </div>
     </section>
 
-    <!-- Testimonials Section -->
-    <section class="section testimonials-section">
+    <!-- Video Testimonials Section -->
+    <section class="section video-testimonials-section">
         <div class="container">
-            <h2 class="section-title text-center">מה אומרים עלינו סוכני הביטוח</h2>
-            <div class="grid-3">
-                <div class="testimonial-card">
-                    <p class="testimonial-content">"DocsFlow שינתה לי את החיים. מה שלקח לי שעות עכשיו לוקח דקות. ממליץ בחום!"</p>
-                    <div class="testimonial-author">משה כהן</div>
-                    <div class="testimonial-company">סוכנות ביטוח כהן ושות'</div>
+            <h2 class="section-title text-center">סוכני ביטוח מספרים על החוויה שלהם</h2>
+            <p class="section-subtitle text-center">שמעו ישירות מהלקוחות שלנו איך DocsFlow שינתה את השגרה היומית שלהם</p>
+            
+            <div class="video-testimonials-grid">
+                <div class="video-testimonial-card" data-video="demo1">
+                    <div class="video-thumbnail">
+                        <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/testimonial-moshe.jpg" alt="משה כהן - סוכן ביטוח" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div class="placeholder-avatar" style="display: none;">👨‍💼</div>
+                        <div class="play-button">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M8 5v14l11-7z"/>
+                            </svg>
+                        </div>
+                        <div class="video-duration">2:15</div>
+                    </div>
+                    <div class="testimonial-info">
+                        <h3 class="testimonial-name">משה כהן</h3>
+                        <p class="testimonial-title">סוכן ביטוח בכיר</p>
+                        <p class="testimonial-company">כהן ושות' ביטוחים</p>
+                        <div class="testimonial-preview">"DocsFlow חסכה לי 3 שעות ביום וגרמה ללקוחות שלי להיות מאושרים יותר"</div>
+                    </div>
                 </div>
-                <div class="testimonial-card">
-                    <p class="testimonial-content">"התמיכה המעולה והמערכת הידידותית הפכו את העבודה שלי ליעילה ומקצועית יותר"</p>
-                    <div class="testimonial-author">שרה לוי</div>
-                    <div class="testimonial-company">לוי ביטוחים</div>
+                
+                <div class="video-testimonial-card" data-video="demo2">
+                    <div class="video-thumbnail">
+                        <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/testimonial-sara.jpg" alt="שרה לוי - סוכנת ביטוח" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div class="placeholder-avatar" style="display: none;">👩‍💼</div>
+                        <div class="play-button">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M8 5v14l11-7z"/>
+                            </svg>
+                        </div>
+                        <div class="video-duration">1:45</div>
+                    </div>
+                    <div class="testimonial-info">
+                        <h3 class="testimonial-name">שרה לוי</h3>
+                        <p class="testimonial-title">מנהלת סוכנות</p>
+                        <p class="testimonial-company">לוי ביטוחים בע"מ</p>
+                        <div class="testimonial-preview">"המעבר למערכת היה קל והתמיכה זמינה תמיד"</div>
+                    </div>
                 </div>
-                <div class="testimonial-card">
-                    <p class="testimonial-content">"האינטגרציה עם WhatsApp מאפשרת לי לעבוד מול לקוחות בצורה מהירה ונוחה"</p>
-                    <div class="testimonial-author">דוד ישראלי</div>
-                    <div class="testimonial-company">ישראלי סוכנות לביטוח</div>
+                
+                <div class="video-testimonial-card" data-video="demo3">
+                    <div class="video-thumbnail">
+                        <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/testimonial-david.jpg" alt="דוד ישראלי - סוכן ביטוח" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div class="placeholder-avatar" style="display: none;">👨‍💻</div>
+                        <div class="play-button">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M8 5v14l11-7z"/>
+                            </svg>
+                        </div>
+                        <div class="video-duration">3:20</div>
+                    </div>
+                    <div class="testimonial-info">
+                        <h3 class="testimonial-name">דוד ישראלי</h3>
+                        <p class="testimonial-title">סוכן ביטוח עצמאי</p>
+                        <p class="testimonial-company">ישראלי - ייעוץ וביטוח</p>
+                        <div class="testimonial-preview">"האינטגרציה עם WhatsApp פשוט מהפכה בתקשורת עם הלקוחות"</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="testimonials-stats">
+                <div class="stat-item">
+                    <div class="stat-number">4.9/5</div>
+                    <div class="stat-label">דירוג ממוצע</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">98%</div>
+                    <div class="stat-label">ממליצים לחברים</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">500+</div>
+                    <div class="stat-label">לקוחות מרוצים</div>
                 </div>
             </div>
         </div>
     </section>
+    
+    <!-- Video Modal -->
+    <div id="videoModal" class="video-modal" style="display: none;">
+        <div class="video-modal-overlay"></div>
+        <div class="video-modal-content">
+            <button class="video-modal-close">&times;</button>
+            <div class="video-container">
+                <div class="video-placeholder">
+                    <div class="demo-video-content" id="demoVideo1" style="display: none;">
+                        <div class="demo-video-header">
+                            <h3>משה כהן - סוכן ביטוח בכיר</h3>
+                            <p>כהן ושות' ביטוחים</p>
+                        </div>
+                        <div class="demo-video-body">
+                            <p><strong>אני עובד בתחום הביטוח כבר 15 שנה</strong>, ובמשך כל השנים האלה חיפשתי דרך לייעל את התהליכים.</p>
+                            <p>עם DocsFlow, מה שלקח לי בעבר <span class="highlight">3-4 שעות ליום</span> עכשיו לוקח רק 30 דקות.</p>
+                            <p>הלקוחות מקבלים את המסמכים <span class="highlight">תוך דקות</span> במקום לחכות ימים שלמים.</p>
+                            <p><strong>התוצאה?</strong> יותר לקוחות מרוצים, יותר זמן למכירות, ויותר רווחיות לעסק שלי.</p>
+                            <p class="testimonial-cta">אני ממליץ על DocsFlow לכל סוכן ביטוח שרוצה להתקדם לעידן הדיגיטלי.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="demo-video-content" id="demoVideo2" style="display: none;">
+                        <div class="demo-video-header">
+                            <h3>שרה לוי - מנהלת סוכנות</h3>
+                            <p>לוי ביטוחים בע"מ</p>
+                        </div>
+                        <div class="demo-video-body">
+                            <p><strong>כשהחלטתי לעבור למערכת דיגיטלית</strong>, הכי חששתי מהמעבר והלימוד.</p>
+                            <p>הצוות של DocsFlow <span class="highlight">ליווה אותי בכל שלב</span> - ההדרכה, המעבר, וגם התמיכה השוטפת.</p>
+                            <p>היום, כל הצוות שלי עובד עם המערכת וכולם <span class="highlight">מרוצים מהשינוי</span>.</p>
+                            <p><strong>הדבר הכי מרשים?</strong> שהמערכת פועלת גם בעברית וגם מתאימה לשוק הישראלי.</p>
+                            <p class="testimonial-cta">ממליצה בחום לכל סוכנות שרוצה להיות מקצועית ויעילה יותר.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="demo-video-content" id="demoVideo3" style="display: none;">
+                        <div class="demo-video-header">
+                            <h3>דוד ישראלי - סוכן ביטוח עצמאי</h3>
+                            <p>ישראלי - ייעוץ וביטוח</p>
+                        </div>
+                        <div class="demo-video-body">
+                            <p><strong>בתור סוכן עצמאי</strong>, אני צריך לעבוד חכם ולא רק קשה.</p>
+                            <p>האינטגרציה עם WhatsApp של DocsFlow <span class="highlight">שינתה לי את המשחק</span> - לקוחות חותמים מהנייד!</p>
+                            <p>במקום להדפיס, לסרוק, לשלוח במייל ולחכות - <span class="highlight">הכל קורה בזמן אמת</span>.</p>
+                            <p><strong>התוצאה המרשימה ביותר?</strong> עליתי ב-40% במכירות כי אני יכול לטפל ביותר לקוחות.</p>
+                            <p class="testimonial-cta">DocsFlow זה לא רק כלי עבודה, זה שדרוג לכל העסק.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- CTA Section -->
     <section class="section cta-section" id="demo">

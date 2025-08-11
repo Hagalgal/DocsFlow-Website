@@ -386,6 +386,12 @@ jQuery(document).ready(function($) {
     if ($('.pricing-calculator').length) {
         calculatePricing();
     }
+    
+    // Interactive Demo Functionality
+    initInteractiveDemo();
+    
+    // Video Testimonials Functionality
+    initVideoTestimonials();\n    \n    // WhatsApp Widget & Social Proof\n    initWhatsAppWidget();\n    initSocialProofNotifications();
 
     // Add loading states to buttons
     $('a[href^="mailto:"], a[href^="tel:"]').click(function() {
@@ -510,6 +516,285 @@ jQuery(document).ready(function($) {
         '@keyframes focusLine {' +
         '  from { width: 0; }' +
         '  to { width: 100%; }' +
+        '}' +
+    '</style>');
+});
+
+// Interactive Demo System
+function initInteractiveDemo() {
+    if (!$('.interactive-demo-section').length) return;
+    
+    const demoSteps = [
+        { id: 1, title: 'העלה מסמך', duration: 4000 },
+        { id: 2, title: 'חתום דיגיטלית', duration: 5000 },
+        { id: 3, title: 'שלח בWhatsApp', duration: 4000 },
+        { id: 4, title: 'עקוב אוטומטית', duration: 3000 }
+    ];
+    
+    let currentStep = 1;
+    let isPlaying = false;
+    let demoInterval;
+    let progressInterval;
+    let totalDuration = demoSteps.reduce((sum, step) => sum + step.duration, 0);
+    let elapsed = 0;
+    
+    function showStep(stepNum) {
+        $('.demo-step').removeClass('active');
+        $('.step-indicator').removeClass('active');
+        
+        $(`.demo-step[data-step="${stepNum}"]`).addClass('active');
+        $(`.step-indicator[data-step="${stepNum}"]`).addClass('active');
+        
+        // Add specific animations based on step
+        switch(stepNum) {
+            case 1:
+                setTimeout(() => {
+                    $('.upload-zone').addClass('active');
+                }, 500);
+                break;
+            case 2:
+                // Signature animation already handled by CSS
+                break;
+            case 3:
+                // Animate WhatsApp messages
+                setTimeout(() => {
+                    $('.message').each(function(index) {
+                        const $message = $(this);
+                        setTimeout(() => {
+                            $message.addClass('animate-in');
+                        }, index * 800);
+                    });
+                }, 500);
+                break;
+            case 4:
+                // Animate timeline items
+                setTimeout(() => {
+                    $('.timeline-item').each(function(index) {
+                        const $item = $(this);
+                        setTimeout(() => {
+                            $item.addClass('completed');
+                        }, index * 600);
+                    });
+                }, 500);
+                break;
+        }
+        
+        currentStep = stepNum;
+    }
+    
+    function startDemo() {
+        isPlaying = true;
+        elapsed = 0;
+        currentStep = 1;
+        
+        $('#demoPlay').addClass('hidden');
+        $('#demoPause').removeClass('hidden');
+        
+        // Reset all animations
+        $('.upload-zone').removeClass('active');
+        $('.message').removeClass('animate-in');
+        $('.timeline-item').removeClass('completed');
+        
+        // Start with first step
+        showStep(1);
+        
+        // Progress tracking
+        progressInterval = setInterval(() => {
+            elapsed += 100;
+            const progressPercent = (elapsed / totalDuration) * 100;
+            $('#demoProgress').css('width', Math.min(progressPercent, 100) + '%');
+            
+            // Update time display
+            const minutes = Math.floor(elapsed / 60000);
+            const seconds = Math.floor((elapsed % 60000) / 1000);
+            $('#currentTime').text(`${minutes}:${seconds.toString().padStart(2, '0')}`);
+            
+            if (elapsed >= totalDuration) {
+                stopDemo();
+            }
+        }, 100);
+        
+        // Step progression
+        let stepStartTime = 0;
+        demoSteps.forEach((step, index) => {
+            setTimeout(() => {
+                if (isPlaying) {
+                    showStep(step.id);
+                }
+            }, stepStartTime);
+            stepStartTime += step.duration;
+        });
+    }
+    
+    function pauseDemo() {
+        isPlaying = false;
+        clearInterval(progressInterval);
+        
+        $('#demoPause').addClass('hidden');
+        $('#demoPlay').removeClass('hidden');
+    }
+    
+    function stopDemo() {
+        isPlaying = false;
+        clearInterval(progressInterval);
+        elapsed = 0;
+        
+        $('#demoPause').addClass('hidden');
+        $('#demoPlay').removeClass('hidden');
+        $('#demoProgress').css('width', '0%');
+        $('#currentTime').text('0:00');
+        
+        // Reset to first step
+        showStep(1);
+    }
+    
+    function restartDemo() {
+        stopDemo();
+        setTimeout(startDemo, 100);
+    }
+    
+    // Event handlers
+    $('#demoPlay').click(startDemo);
+    $('#demoPause').click(pauseDemo);
+    $('#demoRestart').click(restartDemo);
+    
+    // Step indicator clicks
+    $('.step-indicator').click(function() {
+        const stepNum = parseInt($(this).data('step'));
+        if (!isPlaying) {
+            showStep(stepNum);
+        }
+    });
+    
+    // Initialize first step
+    showStep(1);
+    
+    // Set total time display
+    const totalMinutes = Math.floor(totalDuration / 60000);
+    const totalSeconds = Math.floor((totalDuration % 60000) / 1000);
+    $('#totalTime').text(`${totalMinutes}:${totalSeconds.toString().padStart(2, '0')}`);
+}
+
+// Add message animation CSS
+jQuery(document).ready(function($) {
+    $('head').append('<style>' +
+        '.message.animate-in {' +
+        '  animation: messageSlideIn 0.5s ease-out;' +
+        '}' +
+        '@keyframes messageSlideIn {' +
+        '  from { opacity: 0; transform: translateY(10px); }' +
+        '  to { opacity: 1; transform: translateY(0); }' +
+        '}' +
+        '.timeline-item.completed .timeline-dot {' +
+        '  background: #10b981;' +
+        '  box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.2);' +
+        '}' +
+        '.timeline-item {' +
+        '  transition: all 0.3s ease;' +
+        '}' +
+        '.timeline-item.completed {' +
+        '  opacity: 1;' +
+        '}' +
+        '.timeline-item:not(.completed) {' +
+        '  opacity: 0.5;' +
+        '}' +
+    '</style>');
+});
+
+// Video Testimonials System
+function initVideoTestimonials() {
+    if (!$('.video-testimonials-section').length) return;
+    
+    // Video testimonial card click handlers
+    $('.video-testimonial-card').click(function() {
+        const videoId = $(this).data('video');
+        openVideoModal(videoId);
+    });
+    
+    // Close modal handlers
+    $('.video-modal-close, .video-modal-overlay').click(function() {
+        closeVideoModal();
+    });
+    
+    // ESC key to close modal
+    $(document).keydown(function(e) {
+        if (e.key === 'Escape') {
+            closeVideoModal();
+        }
+    });
+    
+    function openVideoModal(videoId) {
+        // Hide all video content
+        $('.demo-video-content').hide();
+        
+        // Show specific video content
+        $('#demoVideo' + videoId.replace('demo', '')).show();
+        
+        // Show modal
+        $('#videoModal').fadeIn(300);
+        
+        // Prevent body scroll
+        $('body').addClass('modal-open');
+        
+        // Track video view
+        if (typeof gtag !== 'undefined') {
+            gtag('event', 'video_view', {
+                'event_category': 'Testimonials',
+                'event_label': videoId,
+                'video_title': $('.video-testimonial-card[data-video="' + videoId + '"] .testimonial-name').text()
+            });
+        }
+        
+        // Start typing animation for the video content
+        animateTestimonialText(videoId);
+    }
+    
+    function closeVideoModal() {
+        $('#videoModal').fadeOut(300);
+        $('body').removeClass('modal-open');
+        
+        // Reset animations
+        $('.demo-video-body p').removeClass('typing-animate');
+    }
+    
+    function animateTestimonialText(videoId) {
+        const videoContent = $('#demoVideo' + videoId.replace('demo', ''));
+        const paragraphs = videoContent.find('.demo-video-body p');
+        
+        paragraphs.each(function(index) {
+            const $p = $(this);
+            setTimeout(() => {
+                $p.addClass('typing-animate');
+            }, index * 800);
+        });
+    }
+}
+
+// Add video modal and animation styles
+jQuery(document).ready(function($) {
+    $('head').append('<style>' +
+        'body.modal-open {' +
+        '  overflow: hidden;' +
+        '}' +
+        '.typing-animate {' +
+        '  animation: typeIn 0.8s ease-out;' +
+        '}' +
+        '@keyframes typeIn {' +
+        '  from { opacity: 0; transform: translateY(10px); }' +
+        '  to { opacity: 1; transform: translateY(0); }' +
+        '}' +
+        '.video-testimonial-card {' +
+        '  animation: cardFloat 6s ease-in-out infinite;' +
+        '}' +
+        '.video-testimonial-card:nth-child(2) {' +
+        '  animation-delay: 2s;' +
+        '}' +
+        '.video-testimonial-card:nth-child(3) {' +
+        '  animation-delay: 4s;' +
+        '}' +
+        '@keyframes cardFloat {' +
+        '  0%, 100% { transform: translateY(0); }' +
+        '  50% { transform: translateY(-5px); }' +
         '}' +
     '</style>');
 });

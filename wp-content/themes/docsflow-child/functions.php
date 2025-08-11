@@ -56,6 +56,14 @@ function docsflow_child_enqueue_styles() {
         true
     );
     
+    // Enqueue WhatsApp Widget JavaScript
+    wp_enqueue_script('docsflow-whatsapp-js',
+        get_stylesheet_directory_uri() . '/js/whatsapp-widget.js',
+        array('jquery'),
+        '1.0.0',
+        true
+    );
+    
     // Localize script for AJAX
     wp_localize_script('docsflow-custom-js', 'docsflow_ajax', array(
         'ajaxurl' => admin_url('admin-ajax.php'),
@@ -359,7 +367,7 @@ function docsflow_create_pages() {
             'template' => 'page-templates/contact.php'
         ),
         'about' => array(
-            'title' => 'על אודות',
+            'title' => 'אודות',
             'content' => 'דף זה יכיל מידע על החברה והצוות.',
             'template' => ''
         ),
@@ -467,7 +475,7 @@ function docsflow_create_navigation() {
                 array('title' => 'אוטומציה', 'url' => home_url('/solutions/process-automation/')),
             )),
             array('title' => 'מחירים', 'url' => home_url('/pricing/')),
-            array('title' => 'על אודות', 'url' => home_url('/about/')),
+            array('title' => 'אודות', 'url' => home_url('/about/')),
             array('title' => 'צור קשר', 'url' => home_url('/contact/')),
         );
         
@@ -502,6 +510,113 @@ function docsflow_create_navigation() {
 
 // Create navigation menu after creating pages
 add_action('after_switch_theme', 'docsflow_create_navigation', 20);
+
+/**
+ * Add WhatsApp Business Chat Widget
+ */
+function docsflow_whatsapp_widget() {
+    ?>
+    <div id="whatsappWidget" class="whatsapp-widget">
+        <div class="whatsapp-button" id="whatsappButton">
+            <svg class="whatsapp-icon" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2C6.48 2 2 6.48 2 12c0 1.54.36 3.04 1.05 4.35L2 22l5.65-1.05C9.96 21.64 11.46 22 13 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm5.5 14.07c-.24.67-1.39 1.24-2.4 1.43-.64.12-1.47.18-4.26-.89-3.34-1.28-5.52-4.64-5.69-4.86-.17-.22-1.4-1.86-1.4-3.55 0-1.69.89-2.52 1.21-2.87.32-.35.7-.44 1.02-.44.12 0 .23.01.33.01.28.02.42.03.6.46.22.51.74 1.8.8 1.93.07.13.11.28.02.45-.09.17-.13.28-.26.43-.13.15-.27.33-.39.45-.13.15-.27.31-.12.61.15.3.67 1.11 1.44 1.8 1.14 1.02 2.06 1.35 2.39 1.48.25.1.39.08.54-.05.15-.13.64-.74.81-.99.17-.25.34-.21.57-.13.24.08 1.52.72 1.78.85.26.13.43.2.5.31.07.11.07.64-.17 1.31z"/>
+            </svg>
+            <span class="whatsapp-text">צ'אט עם מומחה</span>
+        </div>
+        
+        <div class="whatsapp-chat-box" id="whatsappChatBox" style="display: none;">
+            <div class="chat-header">
+                <div class="chat-avatar">👨‍💼</div>
+                <div class="chat-info">
+                    <div class="chat-name">דוד - מומחה DocsFlow</div>
+                    <div class="chat-status">אונליין עכשיו</div>
+                </div>
+                <button class="chat-close" id="chatClose">&times;</button>
+            </div>
+            
+            <div class="chat-messages" id="chatMessages">
+                <div class="message bot">
+                    <div class="message-bubble">
+                        👋 שלום! אני דוד, מומחה DocsFlow
+                    </div>
+                    <div class="message-time">עכשיו</div>
+                </div>
+                <div class="message bot">
+                    <div class="message-bubble">
+                        איך אני יכול לעזור לך היום? 
+                        <br><br>אני יכול לענות על שאלות על:
+                        <br>• החתימה הדיגיטלית
+                        <br>• ניהול המסמכים 
+                        <br>• המחירים והתוכניות
+                        <br>• התחלת ניסיון חינם
+                    </div>
+                    <div class="message-time">עכשיו</div>
+                </div>
+            </div>
+            
+            <div class="chat-quick-replies">
+                <button class="quick-reply" data-message="אני רוצה לשמוע על החתימה הדיגיטלית">חתימה דיגיטלית</button>
+                <button class="quick-reply" data-message="מה המחירים שלכם?">מחירים</button>
+                <button class="quick-reply" data-message="איך אני מתחיל ניסיון חינם?">ניסיון חינם</button>
+            </div>
+            
+            <div class="chat-input">
+                <input type="text" id="chatInput" placeholder="הקלד הודעה..." />
+                <button id="chatSend">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M2 21l21-9L2 3v7l15 2-15 2v7z"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Social Proof Notifications -->
+    <div id="socialProofContainer" class="social-proof-container"></div>
+    <?php
+}
+add_action('wp_footer', 'docsflow_whatsapp_widget');
+
+/**
+ * Add social proof notifications data
+ */
+function docsflow_social_proof_data() {
+    $notifications = array(
+        array(
+            'name' => 'משה כהן מתל אביב',
+            'action' => 'התחיל ניסיון חינם',
+            'time' => '2 דקות'
+        ),
+        array(
+            'name' => 'שרה לוי מחיפה',
+            'action' => 'שדרגה לתוכנית המתקדמת',
+            'time' => '5 דקות'
+        ),
+        array(
+            'name' => 'דוד אברהם מירושלים',
+            'action' => 'הצטרף למערכת',
+            'time' => '8 דקות'
+        ),
+        array(
+            'name' => 'רחל מזרחי מבאר שבע',
+            'action' => 'חתמה על 50 מסמכים',
+            'time' => '12 דקות'
+        ),
+        array(
+            'name' => 'יוסי גרין מנתניה',
+            'action' => 'חסך 3 שעות בעבודה',
+            'time' => '15 דקות'
+        ),
+        array(
+            'name' => 'מירי שטרן מפתח תקווה',
+            'action' => 'העבירה 100 לקוחות למערכת',
+            'time' => '18 דקות'
+        )
+    );
+    
+    wp_localize_script('docsflow-custom-js', 'socialProofData', $notifications);
+}
+add_action('wp_enqueue_scripts', 'docsflow_social_proof_data');
 
 /**
  * Create pages button for admin
@@ -605,7 +720,7 @@ function docsflow_show_pages_status() {
         'features' => 'תכונות', 
         'pricing' => 'מחירים',
         'contact' => 'צור קשר',
-        'about' => 'על אודות',
+        'about' => 'אודות',
         'solutions' => 'פתרונות',
         'solutions/digital-signature' => 'חתימה דיגיטלית',
         'solutions/document-management' => 'ניהול מסמכים',
