@@ -974,7 +974,7 @@ a:hover {
   border: none !important;
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15), 0 4px 8px rgba(0, 0, 0, 0.1) !important;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25), 0 4px 16px rgba(0, 0, 0, 0.15) !important;
   text-decoration: none !important;
   display: inline-flex;
   flex-direction: column;
@@ -1002,8 +1002,8 @@ a:hover {
 
 .btn-primary:hover, .ast-button:hover, .button:hover, .wp-block-button__link:hover {
   background: linear-gradient(135deg, #f1f5f9, #ffffff) !important;
-  transform: translateY(-3px) scale(1.02) !important;
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.25), 0 8px 16px rgba(0, 0, 0, 0.15) !important;
+  transform: translateY(-4px) scale(1.03) !important;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3), 0 8px 20px rgba(0, 0, 0, 0.2) !important;
   color: #1e293b !important;
 }
 
@@ -1036,7 +1036,7 @@ a:hover {
 }
 
 .trust-item {
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(255, 255, 255, 0.9) !important;
   font-size: var(--text-sm);
   display: flex;
   flex-direction: column;
@@ -1046,9 +1046,9 @@ a:hover {
 .trust-item strong {
   font-size: var(--text-lg);
   font-weight: 700;
-  color: var(--white);
+  color: #ffffff !important;
   margin-bottom: var(--space-1);
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
 }
 
 .btn-secondary {
@@ -1176,10 +1176,10 @@ a:hover {
 /* Modern Hero Section - EasyHost Style */
 .hero-section {
   padding: 120px 0 80px 0;
-  background: linear-gradient(135deg, #7d56f5 0%, #6366f1 50%, #8b5cf6 100%);
+  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #a855f7 100%);
   position: relative;
   overflow: hidden;
-  min-height: 600px;
+  min-height: 700px;
   display: flex;
   align-items: center;
 }
@@ -1187,25 +1187,57 @@ a:hover {
 .hero-section::before {
   content: '';
   position: absolute;
-  top: 0;
-  right: -200px;
-  width: 800px;
-  height: 800px;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 50%;
+  top: -5%;
+  right: -10%;
+  width: 70%;
+  height: 110%;
+  background: rgba(255, 255, 255, 0.06);
   z-index: 1;
+  /* Fallback for browsers without clip-path support */
+  border-radius: 30% 70% 40% 60% / 20% 80% 60% 40%;
+  /* Modern browsers with clip-path support */
+  clip-path: polygon(20% 0%, 100% 0%, 85% 35%, 100% 70%, 45% 100%, 0% 80%, 15% 45%);
+  transform: rotate(-8deg);
+  animation: morphShape 8s ease-in-out infinite;
 }
 
 .hero-section::after {
   content: '';
   position: absolute;
-  bottom: -100px;
-  left: -150px;
-  width: 400px;
-  height: 400px;
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 50%;
+  bottom: -15%;
+  right: -25%;
+  width: 60%;
+  height: 90%;
+  background: rgba(255, 255, 255, 0.03);
   z-index: 1;
+  /* Fallback for browsers without clip-path support */
+  border-radius: 60% 40% 70% 30% / 40% 60% 20% 80%;
+  /* Modern browsers with clip-path support */
+  clip-path: polygon(25% 10%, 90% 5%, 95% 45%, 80% 85%, 30% 90%, 5% 60%, 10% 25%);
+  transform: rotate(15deg);
+  animation: morphShape2 10s ease-in-out infinite reverse;
+}
+
+@keyframes morphShape {
+  0%, 100% {
+    clip-path: polygon(20% 0%, 100% 0%, 85% 35%, 100% 70%, 45% 100%, 0% 80%, 15% 45%);
+    border-radius: 30% 70% 40% 60% / 20% 80% 60% 40%;
+  }
+  50% {
+    clip-path: polygon(15% 5%, 95% 10%, 90% 40%, 95% 75%, 50% 95%, 5% 75%, 10% 40%);
+    border-radius: 40% 60% 50% 50% / 30% 70% 50% 50%;
+  }
+}
+
+@keyframes morphShape2 {
+  0%, 100% {
+    clip-path: polygon(25% 10%, 90% 5%, 95% 45%, 80% 85%, 30% 90%, 5% 60%, 10% 25%);
+    border-radius: 60% 40% 70% 30% / 40% 60% 20% 80%;
+  }
+  50% {
+    clip-path: polygon(30% 15%, 85% 10%, 90% 50%, 75% 80%, 35% 85%, 10% 65%, 15% 30%);
+    border-radius: 50% 50% 60% 40% / 50% 50% 30% 70%;
+  }
 }
 
 .hero-content {
@@ -1222,18 +1254,22 @@ a:hover {
 
 .hero-text {
   text-align: right;
-  color: var(--white);
+  color: #ffffff !important;
+}
+
+.hero-text * {
+  color: inherit !important;
 }
 
 .hero-title {
   font-size: var(--text-hero);
   font-weight: 900;
   line-height: 1.05;
-  color: var(--white);
+  color: #ffffff !important;
   margin-bottom: var(--space-8);
   letter-spacing: -0.04em;
   font-family: 'Assistant', sans-serif;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
 .hero-highlight {
@@ -1249,18 +1285,18 @@ a:hover {
 
 .hero-subtitle {
   font-size: var(--text-body-large);
-  color: rgba(255, 255, 255, 0.95);
+  color: rgba(255, 255, 255, 0.95) !important;
   margin-bottom: var(--space-10);
   line-height: 1.7;
   font-weight: 500;
   letter-spacing: -0.01em;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
 }
 
 .hero-benefit {
   display: block;
   margin-top: var(--space-4);
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(255, 255, 255, 0.9) !important;
   font-weight: 400;
   font-style: italic;
 }

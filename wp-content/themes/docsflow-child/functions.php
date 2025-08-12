@@ -36,7 +36,7 @@ function docsflow_child_enqueue_styles() {
     wp_enqueue_style('docsflow-child-style',
         get_stylesheet_directory_uri() . '/style.css',
         array('astra-parent-style', 'docsflow-hebrew-fonts'),
-        '1.0.2'  // Increment version for cache busting
+        '1.0.5'  // Increment version for cache busting
     );
     
     // Add RTL support - WordPress will automatically load style-rtl.css when needed
@@ -99,9 +99,47 @@ function docsflow_inline_critical_css() {
         --text-3xl: 1.875rem;
         --text-4xl: 2.25rem;
         --text-5xl: 3rem;
+        --text-hero: 4rem;
         --radius-md: 8px;
         --radius-lg: 12px;
         --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.05);
+    }
+    
+    /* FORCE Hero Section Styling */
+    .hero-section {
+        background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #a855f7 100%) !important;
+        min-height: 700px !important;
+        padding: 120px 0 80px 0 !important;
+        color: white !important;
+    }
+    
+    .hero-title {
+        color: #ffffff !important;
+        font-size: var(--text-hero) !important;
+        text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2) !important;
+    }
+    
+    .hero-subtitle {
+        color: rgba(255, 255, 255, 0.95) !important;
+        text-shadow: 0 1px 4px rgba(0, 0, 0, 0.15) !important;
+    }
+    
+    .hero-benefit {
+        color: rgba(255, 255, 255, 0.9) !important;
+    }
+    
+    .hero-text,
+    .hero-text *:not(.hero-highlight) {
+        color: #ffffff !important;
+    }
+    
+    .trust-item {
+        color: rgba(255, 255, 255, 0.9) !important;
+    }
+    
+    .trust-item strong {
+        color: #ffffff !important;
+        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2) !important;
     }
     
     body {
@@ -170,6 +208,325 @@ function docsflow_inline_critical_css() {
 add_action('wp_head', 'docsflow_inline_critical_css', 1);
 
 /**
+ * Force hero styling on all pages for testing
+ */
+function docsflow_force_hero_styles() {
+    echo '<style id="docsflow-hero-force">
+    /* EMERGENCY HERO STYLING - FORCE OVERRIDE */
+    .hero-section,
+    .elementor-section.hero-section,
+    section[class*="hero"] {
+        background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #a855f7 100%) !important;
+        min-height: 700px !important;
+        padding: 120px 20px 80px 20px !important;
+        color: white !important;
+        display: flex !important;
+        align-items: center !important;
+        position: relative !important;
+        overflow: hidden !important;
+        box-sizing: border-box !important;
+    }
+    
+    /* Force visible organic shapes */
+    .hero-section::before,
+    .hero-section::after {
+        opacity: 1 !important;
+        display: block !important;
+        z-index: 1 !important;
+    }
+    
+    /* Extra organic shape for EasyHost style */
+    .hero-section .hero-content::after {
+        content: "";
+        position: absolute;
+        top: 10%;
+        right: 5%;
+        width: 300px;
+        height: 400px;
+        background: rgba(255, 255, 255, 0.08);
+        border-radius: 45% 55% 35% 65% / 25% 75% 45% 55%;
+        transform: rotate(-12deg);
+        z-index: 1;
+        animation: floatGentle 7s ease-in-out infinite;
+        pointer-events: none;
+    }
+    
+    @keyframes floatGentle {
+        0%, 100% { transform: rotate(-12deg) translateY(0px); }
+        50% { transform: rotate(-8deg) translateY(-10px); }
+    }
+    
+    .hero-section h1,
+    .hero-section .hero-title,
+    .elementor-section h1,
+    section[class*="hero"] h1 {
+        color: #ffffff !important;
+        font-size: 2.5rem !important;
+        font-weight: 900 !important;
+        text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3) !important;
+        margin-bottom: 1.5rem !important;
+        line-height: 1.2 !important;
+        overflow: visible !important;
+        white-space: normal !important;
+    }
+    
+    .hero-section p,
+    .hero-section .hero-subtitle,
+    .elementor-section p,
+    section[class*="hero"] p {
+        color: rgba(255, 255, 255, 0.95) !important;
+        font-size: 1.125rem !important;
+        text-shadow: 0 1px 4px rgba(0, 0, 0, 0.2) !important;
+        line-height: 1.6 !important;
+        margin-bottom: 1rem !important;
+        overflow: visible !important;
+    }
+    
+    .hero-section .hero-content,
+    .hero-section .container {
+        width: 100% !important;
+        max-width: 1200px !important;
+        margin: 0 auto !important;
+        padding: 0 20px !important;
+        overflow: visible !important;
+    }
+    
+    .hero-section *:not(.hero-highlight):not(button):not(.btn-primary):not(.dashboard-mockup):not(.dashboard-mockup *) {
+        color: #ffffff !important;
+    }
+    
+    /* Fix any height/overflow issues */
+    body {
+        padding-top: 90px !important;
+    }
+    
+    .site-header {
+        position: fixed !important;
+        top: 0 !important;
+        z-index: 9999 !important;
+        background: rgba(255, 255, 255, 0.95) !important;
+        backdrop-filter: blur(10px) !important;
+    }
+    
+    /* SUPER SPECIFIC Dashboard Mockup Colors - Force Override */
+    .hero-section .dashboard-mockup,
+    .hero-section .hero-graphics .dashboard-mockup,
+    section.hero-section .dashboard-mockup {
+        background: rgba(255, 255, 255, 0.98) !important;
+        border: 2px solid rgba(255, 255, 255, 0.4) !important;
+        box-shadow: 0 25px 70px rgba(0, 0, 0, 0.4) !important;
+        color: #1f2937 !important;
+    }
+    
+    .hero-section .dashboard-title,
+    .hero-section .dashboard-mockup .dashboard-title {
+        color: #1f2937 !important;
+        font-weight: 700 !important;
+    }
+    
+    .hero-section .dashboard-status,
+    .hero-section .dashboard-mockup .dashboard-status {
+        color: #059669 !important;
+        font-weight: 600 !important;
+    }
+    
+    .hero-section .dashboard-card,
+    .hero-section .dashboard-mockup .dashboard-card {
+        background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%) !important;
+        border: 1px solid #e5e7eb !important;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05) !important;
+    }
+    
+    .hero-section .metric-value,
+    .hero-section .dashboard-metric .metric-value,
+    .hero-section .dashboard-mockup .metric-value {
+        color: #6366f1 !important;
+        font-weight: 800 !important;
+    }
+    
+    .hero-section .metric-label,
+    .hero-section .dashboard-metric .metric-label,
+    .hero-section .dashboard-mockup .metric-label {
+        color: #4b5563 !important;
+        font-weight: 600 !important;
+    }
+    
+    .hero-section .dashboard-chart,
+    .hero-section .dashboard-mockup .dashboard-chart {
+        background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%) !important;
+        border: 1px solid #e5e7eb !important;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05) !important;
+    }
+    
+    .hero-section .chart-title,
+    .hero-section .dashboard-chart .chart-title,
+    .hero-section .dashboard-mockup .chart-title {
+        color: #1f2937 !important;
+        font-weight: 700 !important;
+    }
+    
+    .hero-section .chart-bar,
+    .hero-section .dashboard-chart .chart-bar,
+    .hero-section .dashboard-mockup .chart-bar {
+        background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%) !important;
+        box-shadow: 0 2px 4px rgba(99, 102, 241, 0.3) !important;
+    }
+    
+    /* Override any white text inheritance in dashboard */
+    .hero-section .dashboard-mockup * {
+        color: inherit !important;
+    }
+    
+    .hero-section .dashboard-mockup .dashboard-title,
+    .hero-section .dashboard-mockup .chart-title {
+        color: #1f2937 !important;
+    }
+    
+    .hero-section .dashboard-mockup .metric-label {
+        color: #4b5563 !important;
+    }
+    
+    .hero-section .dashboard-mockup .dashboard-status {
+        color: #059669 !important;
+    }
+    
+    /* HIGHEST PRIORITY - Override white text rule specifically for dashboard */
+    .hero-section .dashboard-mockup,
+    .hero-section .dashboard-mockup *,
+    .hero-section .dashboard-mockup .dashboard-title,
+    .hero-section .dashboard-mockup .dashboard-status,
+    .hero-section .dashboard-mockup .metric-label,
+    .hero-section .dashboard-mockup .chart-title {
+        color: initial !important;
+    }
+    
+    /* Then re-apply correct colors */
+    .hero-section .dashboard-mockup .dashboard-title { color: #1f2937 !important; }
+    .hero-section .dashboard-mockup .dashboard-status { color: #059669 !important; }
+    .hero-section .dashboard-mockup .metric-value { color: #6366f1 !important; }
+    .hero-section .dashboard-mockup .metric-label { color: #4b5563 !important; }
+    .hero-section .dashboard-mockup .chart-title { color: #1f2937 !important; }
+    
+    /* Add beautiful organic shape behind dashboard */
+    .hero-graphics::before {
+        content: "";
+        position: absolute;
+        top: -20%;
+        left: -20%;
+        width: 140%;
+        height: 140%;
+        background: radial-gradient(circle at 30% 40%, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 50%, transparent 80%);
+        clip-path: polygon(15% 5%, 85% 0%, 95% 30%, 90% 65%, 75% 95%, 25% 90%, 5% 70%, 10% 35%);
+        z-index: -1;
+        animation: floatShape 6s ease-in-out infinite;
+    }
+    
+    @keyframes floatShape {
+        0%, 100% { transform: rotate(-2deg) scale(1); }
+        50% { transform: rotate(2deg) scale(1.02); }
+    }
+    </style>';
+}
+add_action('wp_head', 'docsflow_force_hero_styles', 999);
+
+/**
+ * Add header action buttons (Sign Up & Login)
+ */
+function docsflow_header_buttons() {
+    ?>
+    <div class="header-action-buttons">
+        <a href="https://app.docsflow.co.il" class="header-btn header-btn-login" target="_blank">
+            כניסה
+        </a>
+        <a href="https://app.docsflow.co.il" class="header-btn header-btn-signup" target="_blank">
+            פתיחת חשבון
+        </a>
+    </div>
+    
+    <style>
+    /* Header Action Buttons */
+    .header-action-buttons {
+        display: flex;
+        align-items: center;
+        gap: var(--space-3);
+        margin-right: var(--space-4);
+    }
+    
+    .header-btn {
+        padding: var(--space-2) var(--space-4) !important;
+        border-radius: 8px !important;
+        font-weight: 600 !important;
+        font-size: var(--text-sm) !important;
+        text-decoration: none !important;
+        transition: all 0.2s ease !important;
+        white-space: nowrap;
+        border: 2px solid transparent !important;
+    }
+    
+    .header-btn-login {
+        background: transparent !important;
+        color: var(--gray-600) !important;
+        border-color: var(--gray-300) !important;
+    }
+    
+    .header-btn-login:hover {
+        background: var(--gray-50) !important;
+        color: var(--gray-900) !important;
+        border-color: var(--gray-400) !important;
+    }
+    
+    .header-btn-signup {
+        background: linear-gradient(135deg, #6366f1, #8b5cf6) !important;
+        color: white !important;
+        box-shadow: 0 2px 4px rgba(99, 102, 241, 0.3) !important;
+    }
+    
+    .header-btn-signup:hover {
+        background: linear-gradient(135deg, #5b5bd6, #7c3aed) !important;
+        color: white !important;
+        transform: translateY(-1px) !important;
+        box-shadow: 0 4px 8px rgba(99, 102, 241, 0.4) !important;
+    }
+    
+    /* Mobile responsive */
+    @media (max-width: 768px) {
+        .header-action-buttons {
+            margin-right: var(--space-2);
+            gap: var(--space-2);
+        }
+        
+        .header-btn {
+            padding: var(--space-1) var(--space-3) !important;
+            font-size: var(--text-xs) !important;
+        }
+    }
+    
+    /* Integrate with header layout */
+    .site-header .main-header-container,
+    .site-header .ast-container {
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+    }
+    
+    .main-navigation {
+        margin-left: auto;
+        margin-right: var(--space-6);
+    }
+    </style>
+    <?php
+}
+add_action('astra_header', 'docsflow_header_buttons', 15);
+
+/**
+ * Alternative hook for header buttons - try multiple locations
+ */
+function docsflow_header_buttons_alternative() {
+    docsflow_header_buttons();
+}
+add_action('wp_head', 'docsflow_header_buttons_alternative', 100);
+
+/**
  * Debug function to check if child theme is active
  */
 function docsflow_debug_info() {
@@ -179,6 +536,10 @@ function docsflow_debug_info() {
         echo '<!-- Parent Theme Directory: ' . get_template_directory_uri() . ' -->';
         echo '<!-- Child Theme Active: ' . (is_child_theme() ? 'Yes' : 'No') . ' -->';
         echo '<!-- Current Theme: ' . get_stylesheet() . ' -->';
+        echo '<!-- Current Template: ' . get_page_template_slug() . ' -->';
+        echo '<!-- Is Front Page: ' . (is_front_page() ? 'Yes' : 'No') . ' -->';
+        echo '<!-- Current Page ID: ' . get_the_ID() . ' -->';
+        echo '<!-- Homepage Setting: ' . get_option('page_on_front') . ' -->';
     }
 }
 add_action('wp_head', 'docsflow_debug_info');
@@ -366,6 +727,11 @@ function docsflow_create_pages() {
             'content' => '',
             'template' => 'page-templates/contact.php'
         ),
+        'faq' => array(
+            'title' => 'שאלות ותשובות',
+            'content' => '',
+            'template' => 'page-templates/faq.php'
+        ),
         'about' => array(
             'title' => 'אודות',
             'content' => 'דף זה יכיל מידע על החברה והצוות.',
@@ -475,6 +841,7 @@ function docsflow_create_navigation() {
                 array('title' => 'אוטומציה', 'url' => home_url('/solutions/process-automation/')),
             )),
             array('title' => 'מחירים', 'url' => home_url('/pricing/')),
+            array('title' => 'שאלות ותשובות', 'url' => home_url('/faq/')),
             array('title' => 'אודות', 'url' => home_url('/about/')),
             array('title' => 'צור קשר', 'url' => home_url('/contact/')),
         );
@@ -510,6 +877,53 @@ function docsflow_create_navigation() {
 
 // Create navigation menu after creating pages
 add_action('after_switch_theme', 'docsflow_create_navigation', 20);
+
+/**
+ * Update existing navigation menu with new FAQ item and fix About text
+ */
+function docsflow_update_navigation() {
+    $menu_name = 'Primary Menu';
+    $menu = wp_get_nav_menu_object($menu_name);
+    
+    if ($menu) {
+        $menu_items = wp_get_nav_menu_items($menu->term_id);
+        $faq_exists = false;
+        $about_fixed = false;
+        
+        foreach ($menu_items as $item) {
+            // Check if FAQ item already exists
+            if ($item->title === 'שאלות ותשובות') {
+                $faq_exists = true;
+            }
+            
+            // Fix "על אודות" to "אודות"
+            if ($item->title === 'על אודות') {
+                wp_update_nav_menu_item($menu->term_id, $item->ID, array(
+                    'menu-item-title' => 'אודות',
+                    'menu-item-url' => $item->url,
+                    'menu-item-status' => 'publish',
+                    'menu-item-type' => $item->type,
+                    'menu-item-object' => $item->object,
+                    'menu-item-object-id' => $item->object_id
+                ));
+                $about_fixed = true;
+            }
+        }
+        
+        // Add FAQ item if it doesn't exist
+        if (!$faq_exists) {
+            wp_update_nav_menu_item($menu->term_id, 0, array(
+                'menu-item-title' => 'שאלות ותשובות',
+                'menu-item-url' => home_url('/faq/'),
+                'menu-item-status' => 'publish',
+                'menu-item-type' => 'custom'
+            ));
+        }
+    }
+}
+
+// DISABLED: Automatic menu updates that were causing menu corruption
+// add_action('wp_loaded', 'docsflow_update_navigation');
 
 /**
  * Add WhatsApp Business Chat Widget
@@ -642,12 +1056,17 @@ function docsflow_admin_page() {
         docsflow_fix_page_templates();
         echo '<div class="notice notice-success"><p>Page templates fixed successfully!</p></div>';
     }
+    
+    if (isset($_POST['update_menu']) && check_admin_referer('docsflow_update_menu')) {
+        docsflow_update_navigation();
+        echo '<div class="notice notice-success"><p>Menu updated successfully!</p></div>';
+    }
     ?>
     <div class="wrap">
         <h1>DocsFlow Theme Setup</h1>
         
-        <div style="display: flex; gap: 20px; margin-bottom: 30px;">
-            <div style="flex: 1;">
+        <div style="display: flex; gap: 20px; margin-bottom: 30px; flex-wrap: wrap;">
+            <div style="flex: 1; min-width: 300px;">
                 <h2>Create Pages</h2>
                 <p>Click the button below to create all necessary pages for the DocsFlow website.</p>
                 <form method="post">
@@ -656,12 +1075,21 @@ function docsflow_admin_page() {
                 </form>
             </div>
             
-            <div style="flex: 1;">
+            <div style="flex: 1; min-width: 300px;">
                 <h2>Fix Templates</h2>
                 <p>If pages exist but aren't showing correctly, click here to fix their templates.</p>
                 <form method="post">
                     <?php wp_nonce_field('docsflow_fix_templates'); ?>
                     <input type="submit" name="fix_templates" class="button button-secondary" value="Fix Page Templates">
+                </form>
+            </div>
+            
+            <div style="flex: 1; min-width: 300px;">
+                <h2>Update Menu</h2>
+                <p>Manually update the navigation menu to fix text and add FAQ page.</p>
+                <form method="post">
+                    <?php wp_nonce_field('docsflow_update_menu'); ?>
+                    <input type="submit" name="update_menu" class="button button-secondary" value="Update Menu">
                 </form>
             </div>
         </div>
@@ -719,8 +1147,9 @@ function docsflow_show_pages_status() {
         'home' => 'דף הבית',
         'features' => 'תכונות', 
         'pricing' => 'מחירים',
-        'contact' => 'צור קשר',
+        'faq' => 'שאלות ותשובות',
         'about' => 'אודות',
+        'contact' => 'צור קשר',
         'solutions' => 'פתרונות',
         'solutions/digital-signature' => 'חתימה דיגיטלית',
         'solutions/document-management' => 'ניהול מסמכים',

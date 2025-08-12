@@ -44,7 +44,36 @@ get_header(); ?>
                 </div>
             </div>
             <div class="hero-graphics">
-                <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/hero-placeholder.svg" alt="DocsFlow Dashboard" />
+                <div class="dashboard-mockup">
+                    <div class="dashboard-header">
+                        <div class="dashboard-title">DocsFlow לוח בקרה</div>
+                        <div class="dashboard-status">🟢 פעיל</div>
+                    </div>
+                    <div class="dashboard-content">
+                        <div class="dashboard-card">
+                            <div class="dashboard-metric">
+                                <div class="metric-value">250</div>
+                                <div class="metric-label">מסמכים היום</div>
+                            </div>
+                        </div>
+                        <div class="dashboard-card">
+                            <div class="dashboard-metric">
+                                <div class="metric-value">3.2 שע'</div>
+                                <div class="metric-label">זמן נחסך</div>
+                            </div>
+                        </div>
+                        <div class="dashboard-chart">
+                            <div class="chart-title">סטטיסטיקות שבועיות</div>
+                            <div class="chart-bars">
+                                <div class="chart-bar" style="height: 60%"></div>
+                                <div class="chart-bar" style="height: 80%"></div>
+                                <div class="chart-bar" style="height: 45%"></div>
+                                <div class="chart-bar" style="height: 90%"></div>
+                                <div class="chart-bar" style="height: 75%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -340,10 +369,95 @@ get_header(); ?>
     align-items: center;
 }
 
-.hero-graphics img {
-    max-width: 100%;
-    height: auto;
-    filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.1));
+/* Dashboard Mockup Styles */
+.dashboard-mockup {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    padding: var(--space-6);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    max-width: 400px;
+    margin: 0 auto;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--space-4);
+    padding-bottom: var(--space-3);
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.dashboard-title {
+    font-weight: 600;
+    color: var(--gray-800);
+    font-size: var(--text-lg);
+}
+
+.dashboard-status {
+    font-size: var(--text-sm);
+    color: var(--gray-600);
+}
+
+.dashboard-content {
+    display: grid;
+    gap: var(--space-4);
+}
+
+.dashboard-card {
+    background: #f8fafc;
+    border-radius: var(--radius-lg);
+    padding: var(--space-4);
+    text-align: center;
+}
+
+.dashboard-metric .metric-value {
+    font-size: var(--text-2xl);
+    font-weight: 700;
+    color: #6366f1;
+    margin-bottom: var(--space-1);
+}
+
+.dashboard-metric .metric-label {
+    font-size: var(--text-sm);
+    color: var(--gray-600);
+}
+
+.dashboard-chart {
+    background: #f8fafc;
+    border-radius: var(--radius-lg);
+    padding: var(--space-4);
+}
+
+.chart-title {
+    font-size: var(--text-base);
+    font-weight: 600;
+    color: var(--gray-700);
+    margin-bottom: var(--space-3);
+    text-align: center;
+}
+
+.chart-bars {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    height: 80px;
+    gap: var(--space-2);
+}
+
+.chart-bar {
+    background: linear-gradient(135deg, #6366f1, #8b5cf6);
+    border-radius: 4px 4px 0 0;
+    flex: 1;
+    min-height: 20px;
+    animation: chartGrow 1.5s ease-out;
+}
+
+@keyframes chartGrow {
+    from { height: 0; }
+    to { height: var(--bar-height, 50%); }
 }
 
 .benefits-section {

@@ -5,7 +5,11 @@
       "Bash(mkdir:*)",
       "Bash(git push:*)",
       "Bash(wp post list:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(curl:*)",
+      "Bash(unzip:*)",
+      "Bash(cp:*)",
+      "Bash(mv:*)"
     ],
     "deny": []
   }

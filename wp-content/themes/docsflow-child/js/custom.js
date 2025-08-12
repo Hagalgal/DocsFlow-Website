@@ -6,6 +6,132 @@
 
 jQuery(document).ready(function($) {
     'use strict';
+    
+    // Add header buttons if they don't exist
+    function addHeaderButtons() {
+        if ($('.header-action-buttons').length === 0) {
+            var headerButtons = `
+                <div class="header-action-buttons">
+                    <a href="https://app.docsflow.co.il" class="header-btn header-btn-login" target="_blank">
+                        כניסה
+                    </a>
+                    <a href="https://app.docsflow.co.il" class="header-btn header-btn-signup" target="_blank">
+                        פתיחת חשבון
+                    </a>
+                </div>
+            `;
+            
+            // Place buttons in the correct location
+            if ($('.site-header .ast-container').length) {
+                $('.site-header .ast-container').prepend(headerButtons);
+            } else if ($('.main-header-container').length) {
+                $('.main-header-container').prepend(headerButtons);
+            } else if ($('.ast-main-header-wrap .ast-container').length) {
+                $('.ast-main-header-wrap .ast-container').prepend(headerButtons);
+            } else if ($('#masthead .ast-container').length) {
+                $('#masthead .ast-container').prepend(headerButtons);
+            } else if ($('.site-header').length) {
+                $('.site-header').prepend(headerButtons);
+            }
+        }
+    }
+    
+    // Add buttons on page load
+    addHeaderButtons();
+    
+    // Add buttons after a short delay in case header loads later
+    setTimeout(addHeaderButtons, 500);
+    
+    // REMOVED: JavaScript menu text manipulation that was causing issues
+    
+    // Add CSS for header buttons if not already added
+    if ($('#header-buttons-css').length === 0) {
+        $('head').append(`
+            <style id="header-buttons-css">
+            .header-action-buttons {
+                display: flex !important;
+                align-items: center !important;
+                gap: 12px !important;
+                margin-right: auto !important;
+                margin-left: 0 !important;
+                flex-shrink: 0 !important;
+            }
+            
+            .header-btn {
+                padding: 8px 16px !important;
+                border-radius: 8px !important;
+                font-weight: 600 !important;
+                font-size: 14px !important;
+                text-decoration: none !important;
+                transition: all 0.2s ease !important;
+                white-space: nowrap !important;
+                border: 2px solid transparent !important;
+                display: inline-block !important;
+            }
+            
+            .header-btn-login {
+                background: transparent !important;
+                color: #6b7280 !important;
+                border-color: #d1d5db !important;
+            }
+            
+            .header-btn-login:hover {
+                background: #f9fafb !important;
+                color: #111827 !important;
+                border-color: #9ca3af !important;
+            }
+            
+            .header-btn-signup {
+                background: linear-gradient(135deg, #6366f1, #8b5cf6) !important;
+                color: white !important;
+                box-shadow: 0 2px 4px rgba(99, 102, 241, 0.3) !important;
+            }
+            
+            .header-btn-signup:hover {
+                background: linear-gradient(135deg, #5b5bd6, #7c3aed) !important;
+                color: white !important;
+                transform: translateY(-1px) !important;
+                box-shadow: 0 4px 8px rgba(99, 102, 241, 0.4) !important;
+            }
+            
+            .site-header .main-header-container,
+            .site-header .ast-container,
+            .ast-main-header-wrap .ast-container {
+                display: flex !important;
+                align-items: center !important;
+                justify-content: flex-start !important;
+                flex-direction: row-reverse !important;
+            }
+            
+            .main-navigation,
+            .ast-mobile-menu-buttons {
+                margin-left: auto !important;
+                margin-right: 0 !important;
+            }
+            
+            .site-branding {
+                margin-right: auto !important;
+                margin-left: 20px !important;
+            }
+            
+            .site-header {
+                position: relative !important;
+            }
+            
+            @media (max-width: 768px) {
+                .header-action-buttons {
+                    right: 10px !important;
+                    gap: 8px !important;
+                }
+                
+                .header-btn {
+                    padding: 6px 12px !important;
+                    font-size: 12px !important;
+                }
+            }
+            </style>
+        `);
+    }
 
     // Smooth scrolling for anchor links
     $('a[href*="#"]:not([href="#"])').click(function() {
